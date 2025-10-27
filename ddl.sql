@@ -1,5 +1,5 @@
-CREATE DATABASE transport_system;
-USE transport_system;
+CREATE DATABASE transport;
+USE transport;
 
 -- USER
 CREATE TABLE User (
