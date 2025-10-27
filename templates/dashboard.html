@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Dashboard (Role: {{ role | capitalize }})</h1>
+    <p>Welcome, {{ session['username'] }}!</p>
+
+    <!-- Navigation based on Role -->
+    {% if role == 'admin' %}
+    <h2>Admin Tools</h2>
+    <a href="{{ url_for('users') }}">Users Management</a><br>
+    <a href="{{ url_for('stations') }}">Stations Management</a><br>
+    <a href="{{ url_for('routes') }}">Routes Management</a><br>
+    <a href="{{ url_for('vehicles') }}">Vehicles Management</a><br>
+    {% elif role == 'operator' %}
+    <h2>Operator Tools</h2>
+    <a href="{{ url_for('vehicles') }}">View Vehicles</a><br>
+    <a href="{{ url_for('trips') }}">Trips Management</a><br>
+    <a href="{{ url_for('create_announcement') }}">Create Announcement</a><br>
+    {% elif role == 'passenger' %}
+    <h2>Passenger Tools</h2>
+    <a href="{{ url_for('book_ticket') }}">Book Ticket</a><br>
+    <a href="{{ url_for('tickets') }}">View My Tickets</a><br>
+    <a href="{{ url_for('payments') }}">View My Payments</a><br>
+    {% endif %}
+
+    <h2>General Access</h2>
+    <a href="{{ url_for('announcements') }}">View Announcements</a><br>
+
+    <hr>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+
+</html>

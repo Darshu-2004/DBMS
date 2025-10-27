@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Station</title>
+</head>
+
+<body>
+    <h1>Create Station</h1>
+    <a href="{{ url_for('stations') }}">Back to Stations</a>
+    <hr>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input name="name" id="name" required><br><br>
+        <label for="location">Location:</label>
+        <input name="location" id="location"><br><br>
+        <label for="type">Type:</label>
+        <input name="type" id="type"><br><br>
+        <input type="submit" value="Create Station">
+    </form>
+</body>
+
+</html>

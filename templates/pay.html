@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Make Payment</title>
+</head>
+
+<body>
+    <h1>Make Payment</h1>
+    <a href="{{ url_for('payments') }}">Back to Payments</a>
+    <hr>
+    <form method="post">
+        <label for="ticketid">Ticket ID:</label>
+        <input name="ticketid" id="ticketid" required><br><br>
+        <label for="amount">Amount:</label>
+        <input name="amount" id="amount" type="number" step="0.01" required><br><br>
+        <label for="paymenttime">Payment Time:</label>
+        <input name="paymenttime" id="paymenttime" type="datetime-local" required><br><br>
+        <label for="method">Method (e.g., Card, Cash):</label>
+        <input name="method" id="method" required><br><br>
+        <label for="status">Status (e.g., Completed, Pending):</label>
+        <input name="status" id="status" required><br><br>
+        <input type="submit" value="Pay">
+    </form>
+</body>
+
+</html>

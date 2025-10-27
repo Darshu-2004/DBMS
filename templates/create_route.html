@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Route</title>
+</head>
+
+<body>
+    <h1>Create Route</h1>
+    <a href="{{ url_for('routes') }}">Back to Routes</a>
+    <hr>
+    <form method="post">
+        <label for="mode">Mode:</label>
+        <input name="mode" id="mode" required><br><br>
+        <label for="origin_station_id">Origin Station:</label>
+        <input name="origin_station_id" id="origin_station_id" required><br><br>
+
+        <label for="destination_station_id">Destination Station ID:</label>
+        <input name="destination_station_id" id="destination_station_id" required><br><br>
+        <label for="distance_km">Distance (km):</label>
+        <input name="distance_km" id="distance_km" type="number" step="0.1" required><br><br>
+        <input type="submit" value="Create Route">
+    </form>
+</body>
+
+</html>

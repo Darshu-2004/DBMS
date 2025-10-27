@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Announcement</title>
+</head>
+
+<body>
+    <h1>Create Announcement</h1>
+    <a href="{{ url_for('announcements') }}">Back to Announcements</a>
+    <hr>
+    <form method="post">
+        <label for="message">Message:</label>
+        <input name="message" id="message" required><br><br>
+        <label for="datestamp">DateStamp:</label>
+        <input name="datestamp" id="datestamp" type="date" required><br><br>
+        <input type="submit" value="Create Announcement">
+    </form>
+</body>
+
+</html>

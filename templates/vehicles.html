@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vehicles</title>
+</head>
+
+<body>
+    <h1>Vehicles</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    {% if session['role'] == 'admin' %}
+    | <a href="{{ url_for('create_vehicle') }}">Add New Vehicle</a>
+    {% endif %}
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Route ID</th>
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Registration #</th>
+            <th>Status</th>
+        </tr>
+        {% for v in vehicles %}
+        <tr>
+            <td>{{v[0]}}</td>
+            <td>{{v[1]}}</td>
+            <td>{{v[2]}}</td>
+            <td>{{v[3]}}</td>
+            <td>{{v[4]}}</td>
+            <td>{{v[5]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

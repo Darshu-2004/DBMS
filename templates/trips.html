@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trips</title>
+</head>
+
+<body>
+    <h1>Trips</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
+    <a href="{{ url_for('create_trip') }}">Add New Trip</a>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Vehicle ID</th>
+            <th>Route ID</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Status</th>
+        </tr>
+        {% for t in trips %}
+        <tr>
+            <td>{{t[0]}}</td>
+            <td>{{t[1]}}</td>
+            <td>{{t[2]}}</td>
+            <td>{{t[3]}}</td>
+            <td>{{t[4]}}</td>
+            <td>{{t[5]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

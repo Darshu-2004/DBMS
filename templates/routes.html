@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Routes</title>
+</head>
+
+<body>
+    <h1>Routes</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
+    <a href="{{ url_for('create_route') }}">Add New Route</a>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Mode</th>
+            <th>Origin Station ID</th>
+            <th>Destination Station ID</th>
+            <th>Distance (km)</th>
+        </tr>
+        {% for r in routes %}
+        <tr>
+            <td>{{r[0]}}</td>
+            <td>{{r[1]}}</td>
+            <td>{{r[2]}}</td>
+            <td>{{r[3]}}</td>
+            <td>{{r[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Announcements</title>
+</head>
+
+<body>
+    <h1>Announcements</h1>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    {% if session['role'] == 'operator' %}
+    | <a href="{{ url_for('create_announcement') }}">Add New Announcement</a>
+    {% endif %}
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+        {% for a in announcements %}
+        <tr>
+            <td>{{a[0]}}</td>
+            <td>{{a[1]}}</td>
+            <td>{{a[2]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

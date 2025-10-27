@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post">
+        <label for="username">Username:</label>
+        <input name="username" id="username" required><br>
+        <input type="submit" value="Login (Admin/Operator/Passenger)">
+    </form>
+    <p>Use "adminuser", "operatoruser", or "passengeruser" as the username for testing roles (assuming these users exist in your DB).</p>
+</body>
+</html>

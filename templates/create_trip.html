@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Trip</title>
+</head>
+
+<body>
+    <h1>Create Trip</h1>
+    <a href="{{ url_for('trips') }}">Back to Trips</a>
+    <hr>
+    <form method="post">
+        <label for="vehicleid">Vehicle ID:</label>
+        <input name="vehicleid" id="vehicleid" required><br><br>
+        <label for="routeid">Route ID:</label>
+        <input name="routeid" id="routeid" required><br><br>
+        <label for="departuretime">Departure Time:</label>
+        <input name="departuretime" id="departuretime" type="datetime-local" required><br><br>
+        <label for="arrivaltime">Arrival Time:</label>
+        <input name="arrivaltime" id="arrivaltime" type="datetime-local" required><br><br>
+        <label for="status">Status:</label>
+        <input name="status" id="status" required><br><br>
+        <input type="submit" value="Create Trip">
+    </form>
+</body>
+
+</html>

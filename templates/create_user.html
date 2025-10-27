@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create User</title>
+</head>
+
+<body>
+    <h1>Create User</h1>
+    <a href="{{ url_for('users') }}">Back to Users</a>
+    <hr>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input name="name" id="name" required><br><br>
+        <label for="email">Email:</label>
+        <input name="email" id="email" type="email" required><br><br>
+        <label for="password">Password (Placeholder):</label>
+<input name="password_hash" id="password" type="password" required><br><br>
+
+
+        <label for="user_type">Type:</label>
+        <select name="user_type" id="usertype" required>
+            <option value="passenger">passenger</option>
+            <option value="admin">admin</option>
+            <option value="operator">operator</option>
+        </select><br><br>
+        <input type="submit" value="Create User">
+    </form>
+</body>
+
+</html>

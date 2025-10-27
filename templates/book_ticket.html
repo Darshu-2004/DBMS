@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Ticket</title>
+</head>
+
+<body>
+    <h1>Book Ticket</h1>
+    <a href="{{ url_for('tickets') }}">Back to Tickets</a>
+    <hr>
+    <form method="post">
+        <!-- User ID is taken from session, disabled for safety -->
+        <label>User ID:</label>
+        <input value="{{ session['user_id'] }}" disabled><br><br>
+
+        <!-- Trip ID: select dropdown, only valid trips -->
+        <label for="tripid">Trip ID:</label>
+        <select name="trip_id" id="tripid" required>
+            {% for trip in trips %}
+            <option value="{{ trip[0] }}">{{ trip[0] }}</option>
+            {% endfor %}
+        </select><br>
+
+
+        <label for="purchasetime">Purchase Time:</label>
+        <input name="purchase_time" id="purchasetime" type="datetime-local" required><br><br>
+
+        <label for="seatnumber">Seat #:</label>
+        <input name="seat_number" id="seatnumber" required><br><br>
+
+        <label for="status">Status (e.g., Booked):</label>
+        <input name="status" id="status" value="Booked" required><br><br>
+
+        <input type="submit" value="Book Ticket">
+    </form>
+</body>
+
+</html>
