@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_mysqldb import MySQL
-from flask_session import Session
-import redis
+from flask_mysqldb import MySQL #type:ignore
+from flask_session import Session #type:ignore
+import redis #type:ignore
 import pickle
 from datetime import datetime
 import os # Import the os module to access environment variables
@@ -76,6 +76,8 @@ def login():
             session['logged_in'] = True
             session['user_id'] = user[0]
             session['email'] = user[1]
+            # store the username for templates
+            session['username'] = username
             session['role'] = user[2]
             flash(f'Logged in successfully as {username} ({session["role"]})', 'success')
             return redirect(url_for('dashboard'))
@@ -542,3 +544,9 @@ def delete_announcement(announcement_id):
 if __name__ == '__main__':
     # Running in debug mode, in production this is often managed by a WSGI server
     app.run(debug=True)
+
+
+@app.context_processor
+def inject_now():
+    """Provide `now` to templates for footers and timestamps."""
+    return {'now': datetime.now()}

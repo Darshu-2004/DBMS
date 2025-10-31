@@ -1,39 +1,46 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Book Ticket</title>
-</head>
+{% block title %}Book Ticket - Transit System{% endblock %}
 
-<body>
-    <h1>Book Ticket</h1>
-    <a href="{{ url_for('tickets') }}">Back to Tickets</a>
-    <hr>
-    <form method="post">
-        <!-- User ID is taken from session, disabled for safety -->
-        <label>User ID:</label>
-        <input value="{{ session['user_id'] }}" disabled><br><br>
+{% block content %}
+    <div class="card card-small shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Book Ticket</h3>
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">User ID</label>
+                    <input class="form-control" value="{{ session.get('user_id') }}" disabled>
+                </div>
 
-        <!-- Trip ID: select dropdown, only valid trips -->
-        <label for="tripid">Trip ID:</label>
-        <select name="trip_id" id="tripid" required>
-            {% for trip in trips %}
-            <option value="{{ trip[0] }}">{{ trip[0] }}</option>
-            {% endfor %}
-        </select><br>
+                <div class="mb-3">
+                    <label for="tripid" class="form-label">Trip</label>
+                    <select name="trip_id" id="tripid" class="form-select" required>
+                        {% for trip in trips %}
+                        <option value="{{ trip[0] }}">{{ trip[0] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
+                <div class="mb-3">
+                    <label for="purchasetime" class="form-label">Purchase Time</label>
+                    <input name="purchase_time" id="purchasetime" type="datetime-local" class="form-control" required>
+                </div>
 
-        <label for="purchasetime">Purchase Time:</label>
-        <input name="purchase_time" id="purchasetime" type="datetime-local" required><br><br>
+                <div class="mb-3">
+                    <label for="seatnumber" class="form-label">Seat #</label>
+                    <input name="seat_number" id="seatnumber" class="form-control" required>
+                </div>
 
-        <label for="seatnumber">Seat #:</label>
-        <input name="seat_number" id="seatnumber" required><br><br>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input name="status" id="status" class="form-control" value="Booked" required>
+                </div>
 
-        <label for="status">Status (e.g., Booked):</label>
-        <input name="status" id="status" value="Booked" required><br><br>
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Book Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        <input type="submit" value="Book Ticket">
-    </form>
-</body>
-
-</html>
+{% endblock %}

@@ -1,27 +1,37 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Make Payment</title>
-</head>
+{% block title %}Make Payment - Transit System{% endblock %}
 
-<body>
-    <h1>Make Payment</h1>
-    <a href="{{ url_for('payments') }}">Back to Payments</a>
-    <hr>
-    <form method="post">
-        <label for="ticketid">Ticket ID:</label>
-        <input name="ticketid" id="ticketid" required><br><br>
-        <label for="amount">Amount:</label>
-        <input name="amount" id="amount" type="number" step="0.01" required><br><br>
-        <label for="paymenttime">Payment Time:</label>
-        <input name="paymenttime" id="paymenttime" type="datetime-local" required><br><br>
-        <label for="method">Method (e.g., Card, Cash):</label>
-        <input name="method" id="method" required><br><br>
-        <label for="status">Status (e.g., Completed, Pending):</label>
-        <input name="status" id="status" required><br><br>
-        <input type="submit" value="Pay">
-    </form>
-</body>
+{% block content %}
+    <div class="card card-small shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Make Payment</h3>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="ticket_id" class="form-label">Ticket ID</label>
+                    <input name="ticket_id" id="ticket_id" class="form-control" required>
+                </div>
 
-</html>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input name="amount" id="amount" type="number" step="0.01" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="method" class="form-label">Method</label>
+                    <input name="method" id="method" class="form-control" placeholder="Card, Cash" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input name="status" id="status" class="form-control" value="Completed" required>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Pay</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Create Announcement</title>
-</head>
+{% block title %}Create Announcement - Transit System{% endblock %}
 
-<body>
-    <h1>Create Announcement</h1>
-    <a href="{{ url_for('announcements') }}">Back to Announcements</a>
-    <hr>
-    <form method="post">
-        <label for="message">Message:</label>
-        <input name="message" id="message" required><br><br>
-        <label for="datestamp">DateStamp:</label>
-        <input name="datestamp" id="datestamp" type="date" required><br><br>
-        <input type="submit" value="Create Announcement">
-    </form>
-</body>
+{% block content %}
+    <div class="card card-small shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Create Announcement</h3>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+                </div>
 
-</html>
+                <div class="mb-3">
+                    <label for="announcement_time" class="form-label">Announcement Time (optional)</label>
+                    <input name="announcement_time" id="announcement_time" type="datetime-local" class="form-control">
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Post Announcement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

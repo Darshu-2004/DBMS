@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Routes</title>
-</head>
+{% block title %}Routes - Transit System{% endblock %}
 
-<body>
-    <h1>Routes</h1>
-    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
-    <a href="{{ url_for('create_route') }}">Add New Route</a>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class="flashes">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 mb-0">Routes</h2>
+        <div>
+            <a href="{{ url_for('create_route') }}" class="btn btn-sm btn-primary">Add New Route</a>
+        </div>
+    </div>
 
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Mode</th>
-            <th>Origin Station ID</th>
-            <th>Destination Station ID</th>
-            <th>Distance (km)</th>
-        </tr>
-        {% for r in routes %}
-        <tr>
-            <td>{{r[0]}}</td>
-            <td>{{r[1]}}</td>
-            <td>{{r[2]}}</td>
-            <td>{{r[3]}}</td>
-            <td>{{r[4]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
+    <div class="table-wrap card">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Mode</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Distance (km)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in routes %}
+                    <tr>
+                        <td>{{ r[0] }}</td>
+                        <td>{{ r[1] }}</td>
+                        <td>{{ r[2] }}</td>
+                        <td>{{ r[3] }}</td>
+                        <td>{{ r[4] }}</td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="5" class="text-center">No routes found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-</html>
+{% endblock %}

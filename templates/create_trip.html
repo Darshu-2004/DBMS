@@ -1,27 +1,42 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Create Trip</title>
-</head>
+{% block title %}Create Trip - Transit System{% endblock %}
 
-<body>
-    <h1>Create Trip</h1>
-    <a href="{{ url_for('trips') }}">Back to Trips</a>
-    <hr>
-    <form method="post">
-        <label for="vehicleid">Vehicle ID:</label>
-        <input name="vehicleid" id="vehicleid" required><br><br>
-        <label for="routeid">Route ID:</label>
-        <input name="routeid" id="routeid" required><br><br>
-        <label for="departuretime">Departure Time:</label>
-        <input name="departuretime" id="departuretime" type="datetime-local" required><br><br>
-        <label for="arrivaltime">Arrival Time:</label>
-        <input name="arrivaltime" id="arrivaltime" type="datetime-local" required><br><br>
-        <label for="status">Status:</label>
-        <input name="status" id="status" required><br><br>
-        <input type="submit" value="Create Trip">
-    </form>
-</body>
+{% block content %}
+    <div class="card card-small shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Create Trip</h3>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="vehicle_id" class="form-label">Vehicle ID</label>
+                    <input name="vehicle_id" id="vehicle_id" class="form-control" required>
+                </div>
 
-</html>
+                <div class="mb-3">
+                    <label for="route_id" class="form-label">Route ID</label>
+                    <input name="route_id" id="route_id" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="departure_time" class="form-label">Departure Time</label>
+                    <input name="departure_time" id="departure_time" type="datetime-local" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="arrival_time" class="form-label">Arrival Time</label>
+                    <input name="arrival_time" id="arrival_time" type="datetime-local" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input name="status" id="status" class="form-control" required>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Create Trip</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

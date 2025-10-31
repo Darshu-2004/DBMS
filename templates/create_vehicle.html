@@ -1,28 +1,42 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>Create Vehicle</title>
-</head>
+{% block title %}Create Vehicle - Transit System{% endblock %}
 
-<body>
-    <h1>Create Vehicle</h1>
-    <a href="{{ url_for('vehicles') }}">Back to Vehicles</a>
-    <hr>
-    <form method="post">
-        <label for="routeid">Route ID:</label>
-        <input name="routeid" id="routeid" required><br><br>
-        <label for="type">Type:</label>
-        <input name="type" id="type" required><br><br>
-        <label for="capacity">Capacity:</label>
-        <input name="capacity" id="capacity" type="number" required><br><br>
-        <label for="registration_number">Registration Number:</label>
-        <input name="registration_number" id="registration_number" required><br><br>
+{% block content %}
+    <div class="card card-small shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title mb-3">Create Vehicle</h3>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="route_id" class="form-label">Route ID (optional)</label>
+                    <input name="route_id" id="route_id" class="form-control">
+                </div>
 
-        <label for="status">Status:</label>
-        <input name="status" id="status" required><br><br>
-        <input type="submit" value="Create Vehicle">
-    </form>
-</body>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <input name="type" id="type" class="form-control" required>
+                </div>
 
-</html>
+                <div class="mb-3">
+                    <label for="capacity" class="form-label">Capacity</label>
+                    <input name="capacity" id="capacity" type="number" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="registration_number" class="form-label">Registration Number</label>
+                    <input name="registration_number" id="registration_number" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input name="status" id="status" class="form-control" value="active" required>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Create Vehicle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
