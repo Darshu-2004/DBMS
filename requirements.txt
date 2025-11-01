@@ -2,3 +2,6 @@ Flask
 Flask-Session
 flask-mysqldb
 redis
+streamlit
+pymysql
+colorama

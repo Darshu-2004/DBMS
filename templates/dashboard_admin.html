@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard - Transit System{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h4 mb-0">Admin Dashboard</h1>
+            <div class="muted-small">Role: {{ role | capitalize }}</div>
+        </div>
+        <div>
+            <small class="text-muted">Signed in as {{ session.get('email') or 'Admin' }}</small>
+        </div>
+    </div>
+    <div class="row gy-3">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Admin Tools</h5>
+                    <p class="card-text">Manage users, stations, routes and vehicles.</p>
+                    <a href="{{ url_for('users') }}" class="btn btn-sm btn-primary">Users</a>
+                    <a href="{{ url_for('stations') }}" class="btn btn-sm btn-outline-primary">Stations</a>
+                    <a href="{{ url_for('routes') }}" class="btn btn-sm btn-outline-primary">Routes</a>
+                    <a href="{{ url_for('vehicles') }}" class="btn btn-sm btn-outline-primary">Vehicles</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">System</h5>
+                    <p class="card-text">General system controls and reports.</p>
+                    <a href="{{ url_for('announcements') }}" class="btn btn-sm btn-secondary">Announcements</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card border-primary mb-2">
+                        <div class="card-body py-3">
+                            <h6 class="card-subtitle mb-2 text-muted">Users</h6>
+                            <div class="h4">{{ counts.users if counts.users is defined else 'N/A' }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-primary mb-2">
+                        <div class="card-body py-3">
+                            <h6 class="card-subtitle mb-2 text-muted">Routes</h6>
+                            <div class="h4">{{ counts.routes if counts.routes is defined else 'N/A' }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card border-primary mb-2">
+                        <div class="card-body py-3">
+                            <h6 class="card-subtitle mb-2 text-muted">Vehicles</h6>
+                            <div class="h4">{{ counts.vehicles if counts.vehicles is defined else 'N/A' }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

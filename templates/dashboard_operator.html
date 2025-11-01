@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Operator Dashboard - Transit System{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h4 mb-0">Operator Dashboard</h1>
+            <div class="muted-small">Role: {{ role | capitalize }}</div>
+        </div>
+        <div>
+            <small class="text-muted">Signed in as {{ session.get('email') or 'Operator' }}</small>
+        </div>
+    </div>
+    <div class="row gy-3">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Operator Tools</h5>
+                    <p class="card-text">Create trips and post announcements.</p>
+                    <a href="{{ url_for('trips') }}" class="btn btn-sm btn-primary">Trips</a>
+                    <a href="{{ url_for('create_trip') }}" class="btn btn-sm btn-outline-primary">Create Trip</a>
+                    <a href="{{ url_for('create_announcement') }}" class="btn btn-sm btn-outline-primary">Create Announcement</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">General</h5>
+                    <p class="card-text">Announcements and general information.</p>
+                    <a href="{{ url_for('announcements') }}" class="btn btn-sm btn-secondary">Announcements</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Stats</h5>
+                    <p class="card-text">Trips: {{ counts.trips if counts.trips is defined else 'N/A' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

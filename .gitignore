@@ -1,0 +1,14 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Flask session data
+flask_session/
+
+# Virtual environment
+venv/
+.env
+
+# OS / editor specific
+.DS_Store
+*.swp

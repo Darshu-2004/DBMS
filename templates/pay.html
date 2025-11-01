@@ -19,7 +19,13 @@
 
                 <div class="mb-3">
                     <label for="method" class="form-label">Method</label>
-                    <input name="method" id="method" class="form-control" placeholder="Card, Cash" required>
+                    <select name="method" id="method" class="form-select" required>
+                        <option value="">Select payment method</option>
+                        {% for val, label in methods_choices %}
+                            <option value="{{ val }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="form-text">Choose one of the supported methods to avoid database errors.</div>
                 </div>
 
                 <div class="mb-3">
