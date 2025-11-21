@@ -404,12 +404,11 @@ Contributions are welcome! Please follow these steps:
 ## 👥 Team
 
 **Project Team:**
-- [Your Name] - [USN]
-- [Team Member 2] - [USN]
-- [Team Member 3] - [USN]
-- [Team Member 4] - [USN]
+- DARSHITH M S 
+- BANASHANKAR
 
-**Institution:** [Your College Name]  
+
+
 **Course:** Database Management Systems (UE23CS351A)  
 **Academic Year:** 2024-25
 
