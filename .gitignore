@@ -5,3 +5,7 @@ __pycache__/
 backend/cache/
 *.json
 .env
+
+# Large files
+others/train.txt
+train.txt
