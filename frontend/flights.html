@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking - Multi-Modal Transport</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/flights.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">✈️ Flight Booking</div>
+            <div class="nav-menu">
+                <span id="user-name"></span>
+                <a href="index.html">🏠 Home</a>
+                <a href="trains.html">🚂 Trains</a>
+                <a href="ksrtc.html">🚌 KSRTC</a>
+                <a href="mobile_tickets.html">🎫 My Tickets</a>
+                <a href="expenses.html">💰 Expenses</a>
+                <a href="#" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Search Section -->
+        <section id="searchSection" class="section active">
+            <h2>Search Flights</h2>
+            <form id="searchForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromAirport">From Airport</label>
+                        <select id="fromAirport" required>
+                            <option value="">Select Departure Airport</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="toAirport">To Airport</label>
+                        <select id="toAirport" required>
+                            <option value="">Select Arrival Airport</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="journeyDate">Journey Date</label>
+                        <input type="date" id="journeyDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="seatClass">Cabin Class</label>
+                        <select id="seatClass" required>
+                            <option value="">Select Class</option>
+                            <option value="Economy">Economy</option>
+                            <option value="Business">Business Class</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Search Flights</button>
+            </form>
+        </section>
+
+        <!-- Flight Results Section -->
+        <section id="resultsSection" class="section">
+            <h2>Available Flights</h2>
+            <button onclick="backToSearch()" class="btn-secondary">← Back to Search</button>
+            <div id="flightsList" class="flights-list"></div>
+        </section>
+
+        <!-- Seat Selection Section -->
+        <section id="seatsSection" class="section">
+            <h2>Select Your Seat</h2>
+            <button onclick="backToResults()" class="btn-secondary">← Back to Flights</button>
+            <div id="flightDetails" class="flight-info"></div>
+            <div id="seatMap" class="seat-map">
+                <div class="seat-legend">
+                    <div class="legend-item">
+                        <span class="seat available"></span> Available
+                    </div>
+                    <div class="legend-item">
+                        <span class="seat selected"></span> Selected
+                    </div>
+                    <div class="legend-item">
+                        <span class="seat booked"></span> Booked
+                    </div>
+                </div>
+                <div id="seatGrid" class="seat-grid"></div>
+            </div>
+            <div class="selected-seats">
+                <h3>Selected Seat: <span id="selectedSeatsDisplay">None</span></h3>
+                <p>Total Fare: ₹<span id="totalFare">0</span></p>
+                <button id="proceedToPassenger" class="btn-primary" onclick="showPassengerForm()">Proceed to Book</button>
+            </div>
+        </section>
+
+        <!-- Passenger Details Section -->
+        <section id="passengerSection" class="section">
+            <h2>Passenger Details</h2>
+            <button onclick="backToSeats()" class="btn-secondary">← Back to Seats</button>
+            <form id="passengerForm">
+                <div class="form-group">
+                    <label for="passengerName">Full Name (as per ID) *</label>
+                    <input type="text" id="passengerName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="passengerAge">Age *</label>
+                        <input type="number" id="passengerAge" min="1" max="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passengerGender">Gender *</label>
+                        <select id="passengerGender" required>
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passengerPhone">Phone Number *</label>
+                    <input type="tel" id="passengerPhone" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label for="passengerEmail">Email *</label>
+                    <input type="email" id="passengerEmail" required>
+                </div>
+                <button type="submit" class="btn-primary">Confirm Booking & Pay</button>
+            </form>
+        </section>
+
+        <!-- Confirmation Section -->
+        <section id="confirmationSection" class="section">
+            <div class="success-message">
+                <h2>✓ Booking Confirmed!</h2>
+                <div id="boardingPassDetails" class="boarding-pass"></div>
+                <div id="barcode" class="barcode"></div>
+                <div class="action-buttons">
+                    <button onclick="viewAllTickets()" class="btn-primary">View All Boarding Passes</button>
+                    <button onclick="newBooking()" class="btn-secondary">Book Another Flight</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/flights.js"></script>
+</body>
+</html>

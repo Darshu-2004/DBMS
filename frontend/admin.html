@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Redirect to new admin dashboard
+        window.location.href = 'admin_dashboard.html';
+    </script>
+</head>
+<body>
+    <p>Redirecting to Admin Dashboard...</p>
+</body>
+</html>
+                <h3>Total Searches</h3>
+                <p id="total-searches" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Bookings (All)</h3>
+                <p id="total-bookings" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <p id="total-revenue" class="stat-value">₹0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Users</h3>
+                <p id="active-users" class="stat-value">0</p>
+            </div>
+        </div>
+        
+        <!-- Booking System Statistics -->
+        <section class="dashboard-section">
+            <h2>🚌🚂✈️ Transport Booking Statistics</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Transport Type</th>
+                            <th>Total Bookings</th>
+                            <th>Confirmed</th>
+                            <th>Cancelled</th>
+                            <th>Avg Fare</th>
+                            <th>Total Revenue</th>
+                            <th>Unique Users</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-booking-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Popular Routes by Transport Type -->
+        <section class="dashboard-section">
+            <h2>🔥 Popular Routes</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div>
+                    <h3>🚌 KSRTC Buses</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>From → To</th>
+                                <th>Bookings</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="popular-ksrtc-routes"></tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3>🚂 Trains</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>From → To</th>
+                                <th>Bookings</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="popular-train-routes"></tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3>✈️ Flights</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>From → To</th>
+                                <th>Bookings</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="popular-flight-routes"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- User Expense Summary -->
+        <section class="dashboard-section">
+            <h2>💰 Top User Expenses</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Total Expenses</th>
+                            <th>KSRTC Bookings</th>
+                            <th>Train Bookings</th>
+                            <th>Flight Bookings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-expenses"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Transport Mode Stats -->
+        <section class="dashboard-section">
+            <h2>Transport Mode Usage</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Transport Mode</th>
+                            <th>Search Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transport-mode-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Private Mode Preferences -->
+        <section class="dashboard-section">
+            <h2>Private Mode Preferences</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Usage Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="private-mode-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Public Mode Preferences -->
+        <section class="dashboard-section">
+            <h2>Public Mode Preferences</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Usage Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="public-mode-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Multi-Modal Distribution -->
+        <section class="dashboard-section">
+            <h2>Multi-Modal Type Distribution</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Usage Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="multi-modal-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Route Optimization Preferences -->
+        <section class="dashboard-section">
+            <h2>Route Optimization Preferences</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Preference</th>
+                            <th>Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="optimization-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Popular Routes -->
+        <section class="dashboard-section">
+            <h2>Popular Routes (Top 10)</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Transport Mode</th>
+                            <th>Search Count</th>
+                        </tr>
+                    </thead>
+                    <tbody id="popular-routes"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Booking Statistics -->
+        <section class="dashboard-section">
+            <h2>Booking Statistics</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Booking Type</th>
+                            <th>Total</th>
+                            <th>Confirmed</th>
+                            <th>Cancelled</th>
+                            <th>Avg Fare</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booking-stats"></tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- User Activity -->
+        <section class="dashboard-section">
+            <h2>User Activity Summary</h2>
+            <div class="chart-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Total Searches</th>
+                            <th>Total Bookings</th>
+                            <th>Last Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-activity"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>

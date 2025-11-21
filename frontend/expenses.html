@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Expenses - Transport System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ksrtc.css">
+    <style>
+        .expense-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .summary-card h3 {
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            opacity: 0.9;
+        }
+        
+        .summary-card .amount {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .expense-table {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: #f8f9fa;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .category-KSRTC {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .category-TRAIN, .category-Train {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .category-FLIGHT {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .monthly-chart {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">💰 My Expenses</div>
+            <div class="nav-menu">
+                <span id="user-name"></span>
+                <a href="ksrtc.html">🚌 KSRTC</a>
+                <a href="trains.html">🚂 Trains</a>
+                <a href="flights.html">✈️ Flights</a>
+                <a href="mobile_tickets.html">🎫 Tickets</a>
+                <a href="#" id="logout-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="ksrtc-section">
+            <h2>💰 My Travel Expenses</h2>
+            <p class="subtitle">Complete breakdown of all your ticket purchases across KSRTC, Trains, and Flights</p>
+            
+            <div class="expense-summary" id="summary-cards"></div>
+            
+            <div class="expense-table">
+                <h3>Recent Expenses</h3>
+                <table id="expense-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expense-body"></tbody>
+                </table>
+            </div>
+            
+            <div class="monthly-chart">
+                <div id="booking-stats"></div>
+            </div>
+            
+            <!-- User Daily Expense Breakdown -->
+            <div id="user-daily-expenses"></div>
+            
+            <div class="monthly-chart">
+                <h3>📅 Daily Spending (Last 30 Days)</h3>
+                <div id="daily-summary"></div>
+            </div>
+            
+            <div class="monthly-chart">
+                <h3>📅 Monthly Spending Analysis</h3>
+                <div id="monthly-summary"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/expenses.js?v=20251120b"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status - Transport Booking</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .card h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .status.working {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status.protected {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status.public {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .test-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        .test-btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        .features-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features-list li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Transport Booking System</h1>
+        <p class="subtitle">Complete System Status & Navigation Guide</p>
+
+        <!-- Main Pages -->
+        <div class="section">
+            <h2>🏠 Main User Pages</h2>
+            <div class="grid">
+                <div class="card" onclick="window.open('index.html', '_blank')">
+                    <span class="icon">🏠</span>
+                    <h3>Homepage</h3>
+                    <p>Route planning & service selection</p>
+                    <span class="status public">Public Access</span>
+                </div>
+                <div class="card" onclick="window.open('signin.html', '_blank')">
+                    <span class="icon">🔐</span>
+                    <h3>Sign In</h3>
+                    <p>User authentication</p>
+                    <span class="status public">Public Access</span>
+                </div>
+                <div class="card" onclick="window.open('signup.html', '_blank')">
+                    <span class="icon">📝</span>
+                    <h3>Sign Up</h3>
+                    <p>New user registration</p>
+                    <span class="status public">Public Access</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Pages -->
+        <div class="section">
+            <h2>🎫 Booking Systems (Login Required)</h2>
+            <div class="grid">
+                <div class="card" onclick="window.open('ksrtc.html', '_blank')">
+                    <span class="icon">🚌</span>
+                    <h3>KSRTC Buses</h3>
+                    <p>Karnataka State Transport</p>
+                    <p><strong>Features:</strong> Search, Seat Selection, Booking</p>
+                    <span class="status protected">Protected</span>
+                </div>
+                <div class="card" onclick="window.open('/trains', '_blank')">
+                    <span class="icon">🚂</span>
+                    <h3>Train Booking</h3>
+                    <p>Indian Railways - 513 stations</p>
+                    <p><strong>Features:</strong> Search, Coach/Berth, PNR</p>
+                    <span class="status protected">Protected</span>
+                </div>
+                <div class="card" onclick="window.open('/flights', '_blank')">
+                    <span class="icon">✈️</span>
+                    <h3>Flight Booking</h3>
+                    <p>Domestic & International</p>
+                    <p><strong>Features:</strong> Search, Seat Selection</p>
+                    <span class="status protected">Protected</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management -->
+        <div class="section">
+            <h2>👤 User Dashboard (Login Required)</h2>
+            <div class="grid">
+                <div class="card" onclick="window.open('mobile_tickets.html', '_blank')">
+                    <span class="icon">🎫</span>
+                    <h3>My Tickets</h3>
+                    <p>View all bookings (KSRTC, Train, Flight)</p>
+                    <p><strong>Filters:</strong> All, Active, Expired, Cancelled</p>
+                    <span class="status working">Working</span>
+                </div>
+                <div class="card" onclick="window.open('expenses.html', '_blank')">
+                    <span class="icon">💰</span>
+                    <h3>My Expenses</h3>
+                    <p>Track spending across all services</p>
+                    <p><strong>Analytics:</strong> Monthly, Category-wise</p>
+                    <span class="status working">Working</span>
+                </div>
+                <div class="card" onclick="window.open('admin.html', '_blank')">
+                    <span class="icon">📊</span>
+                    <h3>Admin Dashboard</h3>
+                    <p>System analytics & reports</p>
+                    <p><strong>Views:</strong> Revenue, Bookings, Users</p>
+                    <span class="status protected">Admin Only</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access Features -->
+        <div class="section">
+            <h2>⚡ Quick Access Features</h2>
+            <ul class="features-list">
+                <li>My Tickets - View all your bookings in one place</li>
+                <li>My Expenses - Track your travel spending with analytics</li>
+                <li>Live Tracking - Coming soon!</li>
+                <li>Mobile Tickets - Digital tickets with QR codes</li>
+                <li>Offers & Discounts - Coming soon!</li>
+                <li>Analytics Dashboard - Admin access for system insights</li>
+            </ul>
+        </div>
+
+        <!-- Database Info -->
+        <div class="section">
+            <h2>🗄️ Database Status</h2>
+            <ul class="features-list">
+                <li>300 Trains imported (100 Superfast + 100 Express + 100 Passenger)</li>
+                <li>513 Railway Stations across India</li>
+                <li>6,000 Train Coaches configured</li>
+                <li>370,800 Berths available for booking</li>
+                <li>19 KSRTC Bus Stops in Karnataka</li>
+                <li>Multiple bus routes and schedules</li>
+                <li>30+ Database Tables (KSRTC, Trains, Flights, Users)</li>
+            </ul>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="section">
+            <h2>🔌 Working API Endpoints</h2>
+            <div style="background: white; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">
+                <p><strong>Authentication:</strong></p>
+                <p>POST /api/auth/signup - Register new user</p>
+                <p>POST /api/auth/signin - User login</p>
+                <br>
+                <p><strong>KSRTC:</strong></p>
+                <p>GET /api/ksrtc/stops - Get all bus stops</p>
+                <p>GET /api/ksrtc/search - Search buses</p>
+                <p>POST /api/ksrtc/book - Book ticket</p>
+                <br>
+                <p><strong>Trains:</strong></p>
+                <p>GET /api/trains/stations - Get all stations (513)</p>
+                <p>GET /api/trains/search - Search trains</p>
+                <p>GET /api/trains/coaches - Get available coaches</p>
+                <p>POST /api/trains/book - Book ticket</p>
+                <br>
+                <p><strong>Flights:</strong></p>
+                <p>GET /api/flights/airports - Get all airports</p>
+                <p>POST /api/flights/book - Book ticket</p>
+                <br>
+                <p><strong>Unified Endpoints:</strong></p>
+                <p>GET /api/tickets/all - Get all user tickets (KSRTC + Train + Flight)</p>
+                <p>GET /api/expenses/all - Get all user expenses with analytics</p>
+            </div>
+        </div>
+
+        <!-- Test Links -->
+        <div class="section" style="text-align: center;">
+            <h2>🧪 Quick Test Links</h2>
+            <a href="signin.html" class="test-btn" target="_blank">Sign In (demo/demo123)</a>
+            <a href="index.html" class="test-btn" target="_blank">Visit Homepage</a>
+            <a href="mobile_tickets.html" class="test-btn" target="_blank">View Tickets</a>
+            <a href="expenses.html" class="test-btn" target="_blank">View Expenses</a>
+        </div>
+
+        <!-- Navigation Flow -->
+        <div class="section">
+            <h2>🗺️ Navigation Flow</h2>
+            <div style="background: white; padding: 20px; border-radius: 5px;">
+                <p><strong>1. First Visit:</strong> Any page → Auto-redirect to signin.html</p>
+                <p><strong>2. After Login:</strong> Access all protected pages (token in localStorage)</p>
+                <p><strong>3. Navbar Links:</strong> Every page has links to Home, Trains, Flights, KSRTC, Tickets, Expenses</p>
+                <p><strong>4. Logout:</strong> Clears token and redirects to signin</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ Transport Booking System - All pages integrated');
+        console.log('🔧 Backend: http://localhost:5000');
+        console.log('📊 Test Credentials: demo / demo123');
+    </script>
+</body>
+</html>

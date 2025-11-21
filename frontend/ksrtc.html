@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSRTC Bus Booking</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ksrtc.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🚌 KSRTC Bus Booking</div>
+            <div class="nav-menu">
+          
+                <a href="index.html">🏠 Home</a>
+                <a href="trains.html">🚂 Trains</a>
+                <a href="flights.html">✈️ Flights</a>
+                <a href="mobile_tickets.html">🎫 My Tickets</a>
+                <a href="expenses.html">💰 Expenses</a>
+                <a href="#" id="logout-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Search Section -->
+        <section id="search-section" class="ksrtc-section">
+            <h2>🔍 Search Buses</h2>
+            <div class="search-card">
+                <form id="bus-search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="from-stop">From</label>
+                            <select id="from-stop" required>
+                                <option value="">Select Source</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="to-stop">To</label>
+                            <select id="to-stop" required>
+                                <option value="">Select Destination</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="journey-date">Journey Date</label>
+                            <input type="date" id="journey-date" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">🔍 Search Buses</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Available Buses Section -->
+        <section id="buses-section" class="ksrtc-section" style="display:none;">
+            <h2>🚌 Available Buses</h2>
+            <div id="buses-list"></div>
+        </section>
+
+        <!-- Seat Selection Section -->
+        <section id="seat-selection-section" class="ksrtc-section" style="display:none;">
+            <div class="seat-selection-container">
+                <div class="bus-info-card">
+                    <h3 id="selected-bus-info"></h3>
+                    <div id="bus-details"></div>
+                </div>
+                
+                <div class="seat-layout">
+                    <h3>Select Your Seat(s)</h3>
+                    <div class="seat-legend">
+                        <span class="legend-item"><span class="seat-demo available"></span> Available</span>
+                        <span class="legend-item"><span class="seat-demo selected"></span> Selected</span>
+                        <span class="legend-item"><span class="seat-demo booked"></span> Booked</span>
+                    </div>
+                    <div id="seat-map"></div>
+                </div>
+                
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div id="selected-seats-display">No seats selected</div>
+                    <div class="fare-display">
+                        <strong>Total Fare:</strong>
+                        <span id="total-fare">₹0</span>
+                    </div>
+                    <button id="proceed-booking-btn" class="btn btn-primary btn-large" disabled>Proceed to Passenger Details</button>
+                    <button id="back-to-buses-btn" class="btn btn-secondary">← Back to Buses</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Passenger Details Section -->
+        <section id="passenger-section" class="ksrtc-section" style="display:none;">
+            <h2>👤 Passenger Details</h2>
+            <div class="passenger-form-card">
+                <form id="passenger-form">
+                    <div class="form-group">
+                        <label for="passenger-name">Full Name *</label>
+                        <input type="text" id="passenger-name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passenger-age">Age *</label>
+                            <input type="number" id="passenger-age" min="1" max="120" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="passenger-gender">Gender *</label>
+                            <select id="passenger-gender" required>
+                                <option value="">Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passenger-phone">Phone Number *</label>
+                        <input type="tel" id="passenger-phone" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passenger-email">Email (Optional)</label>
+                        <input type="email" id="passenger-email">
+                    </div>
+                    
+                    <div class="booking-review">
+                        <h4>Booking Review</h4>
+                        <div id="booking-review-details"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">🎫 Confirm Booking</button>
+                        <button type="button" id="back-to-seats-btn" class="btn btn-secondary">← Back to Seats</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Booking Confirmation Section -->
+        <section id="confirmation-section" class="ksrtc-section" style="display:none;">
+            <div class="confirmation-card">
+                <div class="success-icon">✅</div>
+                <h2>Booking Confirmed!</h2>
+                <div id="confirmation-details"></div>
+                <div class="confirmation-actions">
+                    <a href="mobile_tickets.html" class="btn btn-primary">View Ticket</a>
+                    <a href="ksrtc.html" class="btn btn-secondary">Book Another</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/ksrtc.js"></script>
+</body>
+</html>

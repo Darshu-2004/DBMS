@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport System - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🚆 Multi-Modal Transport</div>
+            <div class="nav-menu">
+                <span id="user-name"></span>
+                <a href="trains.html">🚂 Trains</a>
+                <a href="flights.html">✈️ Flights</a>
+                <a href="ksrtc.html">🚌 KSRTC</a>
+                <a href="mobile_tickets.html">🎫 My Tickets</a>
+                <a href="expenses.html">💰 Expenses</a>
+                <a href="#" id="logout-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Route Search Section -->
+        <section class="search-section">
+            <h2>Plan Your Journey</h2>
+            
+            <form id="route-search-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="source">📍 From</label>
+                        <input type="text" id="source" name="source" placeholder="Search location..." required autocomplete="off">
+                        <div id="source-suggestions" class="suggestions-dropdown"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">📍 To</label>
+                        <input type="text" id="destination" name="destination" placeholder="Search location..." required autocomplete="off">
+                        <div id="destination-suggestions" class="suggestions-dropdown"></div>
+                    </div>
+                </div>
+                
+                <!-- Transport Mode Selection -->
+                <div class="mode-selection">
+                    <h3>Select Transport Mode</h3>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="transport_mode" value="private" checked>
+                            <span class="radio-content">
+                                <span class="radio-icon">🚗</span>
+                                <span>Private Mode</span>
+                            </span>
+                        </label>
+                        
+                        <label class="radio-card">
+                            <input type="radio" name="transport_mode" value="public">
+                            <span class="radio-content">
+                                <span class="radio-icon">🚌</span>
+                                <span>Public Mode</span>
+                            </span>
+                        </label>
+                        
+                        <label class="radio-card">
+                            <input type="radio" name="transport_mode" value="multi-modal">
+                            <span class="radio-content">
+                                <span class="radio-icon">🔄</span>
+                                <span>Multi-Modal</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Private Mode Options -->
+                <div id="private-options" class="sub-options">
+                    <h4>Private Vehicle Mode</h4>
+                    <div class="option-cards">
+                        <label class="option-card">
+                            <input type="radio" name="private_mode" value="bike">
+                            <span>🏍️ Bike</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="private_mode" value="car" checked>
+                            <span>🚗 Car</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="private_mode" value="walk">
+                            <span>🚶 Walk</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Public Mode Options -->
+                <div id="public-options" class="sub-options" style="display:none;">
+                    <h4>Public Transport Mode</h4>
+                    <div class="option-cards">
+                        <label class="option-card">
+                            <input type="radio" name="public_mode" value="bmtc">
+                            <span>🚌 BMTC</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="public_mode" value="metro" checked>
+                            <span>🚇 Metro</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="public_mode" value="aggregator">
+                            <span>🚕 Aggregators</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Multi-Modal Options -->
+                <div id="multi-modal-options" class="sub-options" style="display:none;">
+                    <h4>Traveling Preference</h4>
+                    <div class="option-cards">
+                        <label class="option-card">
+                            <input type="radio" name="multi_modal_type" value="luggage">
+                            <span>🧳 With Luggage</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="multi_modal_type" value="elderly">
+                            <span>👴 Elderly Person</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="multi_modal_type" value="child">
+                            <span>👶 With Child</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="multi_modal_type" value="family">
+                            <span>👨‍👩‍👧‍👦 Family Group</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Route Optimization Preference -->
+                <div class="optimization-options">
+                    <h4>Optimize For</h4>
+                    <div class="option-cards">
+                        <label class="option-card">
+                            <input type="radio" name="preference_type" value="time" checked>
+                            <span>⏱️ Time</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="preference_type" value="cost">
+                            <span>💰 Cost</span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="preference_type" value="fuel">
+                            <span>⛽ Fuel Efficiency</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">🔍 Search Routes</button>
+            </form>
+        </section>
+        
+        <!-- Search Results -->
+        <section id="results-section" class="results-section" style="display:none;">
+            <h2>Available Routes</h2>
+            <div id="route-results"></div>
+        </section>
+        
+        <!-- Map View Section -->
+        <section id="map-section" class="map-section" style="display:none;">
+            <div class="map-header">
+                <h2>🗺️ Route Navigation</h2>
+                <div class="map-controls">
+                    <button onclick="stopNavigation()" class="btn btn-danger btn-stop" style="display:none;">⏹️ End Navigation</button>
+                    <button onclick="closeMap()" class="btn btn-secondary">✖️ Close</button>
+                </div>
+            </div>
+            <div id="map-container"></div>
+            <div id="navigation-info" class="navigation-info">
+                <div class="nav-stat">
+                    <strong>Current Position:</strong>
+                    <span id="current-position">Starting...</span>
+                </div>
+                <div class="nav-stat">
+                    <strong>Distance Remaining:</strong>
+                    <span id="distance-remaining">--</span>
+                </div>
+                <div class="nav-stat">
+                    <strong>Time Remaining:</strong>
+                    <span id="time-remaining">--</span>
+                </div>
+                <div class="nav-stat">
+                    <strong>Speed:</strong>
+                    <span id="current-speed">0 km/h</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- State Transport & Travel Services -->
+        <section class="travel-services">
+            <h2>Book Your Journey</h2>
+            <div class="service-grid">
+                <div class="service-card" onclick="window.location.href='ksrtc.html'">
+                    <div class="service-icon">🚌</div>
+                    <h3>KSRTC</h3>
+                    <p>Karnataka State Transport</p>
+                </div>
+                
+                <div class="service-card" onclick="window.location.href='trains.html'">
+                    <div class="service-icon">🚆</div>
+                    <h3>Trains</h3>
+                    <p>Indian Railways</p>
+                </div>
+                
+                <div class="service-card" onclick="window.location.href='flights.html'">
+                    <div class="service-icon">✈️</div>
+                    <h3>Flights</h3>
+                    <p>Domestic & International</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quick Access Features -->
+        <section class="quick-access">
+            <h2>Quick Access</h2>
+            <div class="feature-grid">
+                <div class="feature-card" onclick="window.location.href='mobile_tickets.html'">
+                    <span class="feature-icon">🎫</span>
+                    <p>My Tickets</p>
+                </div>
+                <div class="feature-card" onclick="window.location.href='expenses.html'">
+                    <span class="feature-icon">💰</span>
+                    <p>My Expenses</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- My Bookings Modal -->
+    <div id="bookings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>My Bookings</h2>
+            <div id="bookings-list"></div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>

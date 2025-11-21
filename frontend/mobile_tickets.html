@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tickets - KSRTC</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ksrtc.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">🎫 My Tickets</div>
+            <div class="nav-menu">
+                <span id="user-name"></span>
+                <a href="ksrtc.html">🚌 KSRTC</a>
+                <a href="trains.html">🚂 Trains</a>
+                <a href="flights.html">✈️ Flights</a>
+                <a href="expenses.html">💰 Expenses</a>
+                <a href="#" id="logout-link">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="ksrtc-section">
+            <h2>🎫 All My Tickets</h2>
+            <p class="subtitle">View all your KSRTC, Train, and Flight bookings in one place</p>
+            
+            <div class="ticket-filter">
+                <button class="filter-btn active" data-filter="all">All Tickets</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="expired">Expired</button>
+                <button class="filter-btn" data-filter="cancelled">Cancelled</button>
+            </div>
+            
+            <div id="tickets-container"></div>
+        </section>
+    </div>
+
+    <script src="js/mobile_tickets.js"></script>
+</body>
+</html>
