@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pdf
+*.xlsx
+backend/cache/
+*.json
+.env
